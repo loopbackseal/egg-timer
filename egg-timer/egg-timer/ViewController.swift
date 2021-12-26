@@ -24,9 +24,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func eggPressed(_ sender: UIButton) {
-        let hardness = sender.currentTitle!
-        counter = eggTime[hardness]! * 60
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        if let hardness = sender.currentTitle {
+            counter = eggTime[hardness]! * 60
+            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        } else {
+            print("title is nil")
+        }
     }
     
 }
